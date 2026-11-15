@@ -1,0 +1,10 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.cache/
+.DS_Store
+
+# Guesty documentation text is downloaded at run time and never committed.
+data/raw/
+data/processed/

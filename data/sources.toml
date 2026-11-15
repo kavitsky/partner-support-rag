@@ -1,0 +1,223 @@
+# Corpus: Guesty public developer guides (Open API + Booking Engine API).
+# The documents are not stored in this repo; `make fetch` downloads them into data/raw/.
+#
+# format = how the document enters the pipeline:
+#   html  the live page as served (navigation, scripts, footer and all)
+#   pdf   the live page printed to PDF by headless Chrome (browser header/footer, page breaks)
+#   docx  the page's Markdown export converted to a Word document (heading styles, lists, tables)
+# Default format is html.
+
+[[doc]]
+id = "oa-quick-start-guide"
+url = "https://open-api-docs.guesty.com/docs/quick-start-guide"
+format = "docx"
+
+[[doc]]
+id = "oa-postman-guide"
+url = "https://open-api-docs.guesty.com/docs/postman-guide"
+
+[[doc]]
+id = "oa-authentication"
+url = "https://open-api-docs.guesty.com/docs/authentication"
+format = "docx"
+
+[[doc]]
+id = "oa-upgrading-third-party-access"
+url = "https://open-api-docs.guesty.com/docs/upgrading-third-party-access-to-your-guesty-account"
+
+[[doc]]
+id = "oa-rate-limits"
+url = "https://open-api-docs.guesty.com/docs/rate-limits"
+format = "pdf"
+
+[[doc]]
+id = "oa-custom-reservation-fields-migration"
+url = "https://open-api-docs.guesty.com/docs/custom-reservation-fields-migration"
+
+[[doc]]
+id = "oa-calendar-webhook-migration"
+url = "https://open-api-docs.guesty.com/docs/calendar-webhook-migration"
+
+[[doc]]
+id = "oa-reservation-webhooks-migration"
+url = "https://open-api-docs.guesty.com/docs/reservation-webhooks-migration-guide"
+format = "pdf"
+
+[[doc]]
+id = "oa-reservation-migration"
+url = "https://open-api-docs.guesty.com/docs/reservation-migration"
+
+[[doc]]
+id = "oa-direct-booking-website"
+url = "https://open-api-docs.guesty.com/docs/moving-your-website-from-guestys-legacy-api-to-booking-engine-api"
+
+[[doc]]
+id = "oa-troubleshooting-error-codes"
+url = "https://open-api-docs.guesty.com/docs/troubleshooting-api-error-codes"
+format = "pdf"
+
+[[doc]]
+id = "oa-mcp-server"
+url = "https://open-api-docs.guesty.com/docs/guesty-mcp-server-beta"
+
+[[doc]]
+id = "oa-calendar-block-types"
+url = "https://open-api-docs.guesty.com/docs/calendar-block-types"
+format = "pdf"
+
+[[doc]]
+id = "oa-guestypay-tokenization"
+url = "https://open-api-docs.guesty.com/docs/tokenizing-payment-methods"
+
+[[doc]]
+id = "oa-stripe-tokenization"
+url = "https://open-api-docs.guesty.com/docs/stripe-tokenization-flow-copy"
+
+[[doc]]
+id = "oa-payment-provider-id"
+url = "https://open-api-docs.guesty.com/docs/retrieving-the-payment-provider-id"
+
+[[doc]]
+id = "oa-posting-guest-payment"
+url = "https://open-api-docs.guesty.com/docs/posting-a-guest-payment"
+format = "docx"
+
+[[doc]]
+id = "oa-scheduled-payment"
+url = "https://open-api-docs.guesty.com/docs/canceling-or-editing-a-scheduled-payment"
+
+[[doc]]
+id = "oa-refunding-guest-payment"
+url = "https://open-api-docs.guesty.com/docs/refunding-a-guest-payment"
+format = "pdf"
+
+[[doc]]
+id = "oa-external-guest-payments"
+url = "https://open-api-docs.guesty.com/docs/recording-external-guest-payments"
+
+[[doc]]
+id = "oa-create-reservation"
+url = "https://open-api-docs.guesty.com/docs/create-a-reservation"
+
+[[doc]]
+id = "oa-reservation-alterations"
+url = "https://open-api-docs.guesty.com/docs/reservation-alterations"
+
+[[doc]]
+id = "oa-extend-shorten-reservation"
+url = "https://open-api-docs.guesty.com/docs/extend-or-shorten-a-reservation"
+
+[[doc]]
+id = "oa-relocating-guest"
+url = "https://open-api-docs.guesty.com/docs/relocating-a-guest"
+
+[[doc]]
+id = "oa-canceling-booking"
+url = "https://open-api-docs.guesty.com/docs/canceling-a-booking-or-inquiry"
+format = "pdf"
+
+[[doc]]
+id = "oa-reservations-v3-booking-flow"
+url = "https://open-api-docs.guesty.com/docs/reservations-v3-booking-flow"
+format = "docx"
+
+[[doc]]
+id = "oa-search-reservations"
+url = "https://open-api-docs.guesty.com/docs/how-to-search-for-reservations"
+
+[[doc]]
+id = "oa-webhooks"
+url = "https://open-api-docs.guesty.com/docs/webhooks"
+format = "pdf"
+
+[[doc]]
+id = "oa-webhooks-calendar"
+url = "https://open-api-docs.guesty.com/docs/webhooks-calendar"
+
+[[doc]]
+id = "oa-webhooks-messages"
+url = "https://open-api-docs.guesty.com/docs/webhooks-messages"
+
+[[doc]]
+id = "oa-financial-webhooks"
+url = "https://open-api-docs.guesty.com/docs/financial-webhooks"
+
+[[doc]]
+id = "oa-webhooks-guests"
+url = "https://open-api-docs.guesty.com/docs/webhooks-guests"
+
+[[doc]]
+id = "oa-webhooks-listings"
+url = "https://open-api-docs.guesty.com/docs/webhooks-listings"
+
+[[doc]]
+id = "oa-webhooks-payments"
+url = "https://open-api-docs.guesty.com/docs/webhooks-payments"
+
+[[doc]]
+id = "oa-webhooks-reservations"
+url = "https://open-api-docs.guesty.com/docs/webhooks-reservations"
+
+[[doc]]
+id = "oa-webhooks-tasks"
+url = "https://open-api-docs.guesty.com/docs/webhooks-tasks"
+
+[[doc]]
+id = "oa-list-unlist-properties"
+url = "https://open-api-docs.guesty.com/docs/list-and-unlist-properties"
+
+[[doc]]
+id = "oa-deactivating-listings"
+url = "https://open-api-docs.guesty.com/docs/deactivating-listings"
+
+[[doc]]
+id = "be-quick-start"
+url = "https://booking-api-docs.guesty.com/docs/quick-start"
+
+[[doc]]
+id = "be-authentication"
+url = "https://booking-api-docs.guesty.com/docs/authentication-1"
+format = "docx"
+
+[[doc]]
+id = "be-booking-flow-migration"
+url = "https://booking-api-docs.guesty.com/docs/booking-flow-migration"
+format = "docx"
+
+[[doc]]
+id = "be-booking-flow"
+url = "https://booking-api-docs.guesty.com/docs/booking-flow"
+
+[[doc]]
+id = "be-reservation-quote-flow"
+url = "https://booking-api-docs.guesty.com/docs/new-reservation-creation-flow"
+
+[[doc]]
+id = "be-guestypay-tokenization"
+url = "https://booking-api-docs.guesty.com/docs/tokenizing-payment-methods"
+
+[[doc]]
+id = "be-stripe-tokenization"
+url = "https://booking-api-docs.guesty.com/docs/stripe-tokenization-flow"
+
+[[doc]]
+id = "be-accurate-stay-pricing"
+url = "https://booking-api-docs.guesty.com/docs/retrieve-accurate-stay-pricing"
+
+[[doc]]
+id = "be-upsell-workflow"
+url = "https://booking-api-docs.guesty.com/docs/understanding-the-upsell-workflow"
+
+[[doc]]
+id = "be-google-vacation-rentals"
+url = "https://booking-api-docs.guesty.com/docs/google"
+
+[[doc]]
+id = "be-faq"
+url = "https://booking-api-docs.guesty.com/docs/frequently-asked-questions"
+# Not PDF: Chrome's print skips the collapsed <details> answers that make up this page.
+
+[[doc]]
+id = "be-handling-failed-requests"
+url = "https://booking-api-docs.guesty.com/reference/handling-failed-requests"
+format = "pdf"

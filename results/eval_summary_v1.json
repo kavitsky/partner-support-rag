@@ -1,0 +1,88 @@
+{
+  "answer_model": "google/gemini-2.5-flash-lite",
+  "answer_prompt": "v1 (bf50ddf0115c)",
+  "judge_model": "openai/gpt-4.1-mini",
+  "retrieval": "structure / hybrid_rerank / BAAI/bge-small-en-v1.5",
+  "overall": {
+    "n": 28,
+    "abstention_accuracy": 0.929,
+    "source_hit": 0.917,
+    "key_fact_recall": 0.778,
+    "forbidden_rate": 0.0,
+    "citation_validity": 1.0,
+    "judge_correctness": 0.911,
+    "faithfulness": 0.995
+  },
+  "by_type": {
+    "answerable": {
+      "n": 16,
+      "abstention_accuracy": 0.938,
+      "source_hit": 0.938,
+      "key_fact_recall": 0.854,
+      "forbidden_rate": 0.0,
+      "citation_validity": 1.0,
+      "judge_correctness": 0.969,
+      "faithfulness": 0.993
+    },
+    "multilingual": {
+      "n": 2,
+      "abstention_accuracy": 1.0,
+      "source_hit": 1.0,
+      "key_fact_recall": 0.5,
+      "forbidden_rate": 0.0,
+      "citation_validity": 1.0,
+      "judge_correctness": 0.75,
+      "faithfulness": 1.0
+    },
+    "trap_outdated": {
+      "n": 2,
+      "abstention_accuracy": 0.5,
+      "source_hit": 0.5,
+      "key_fact_recall": 0.0,
+      "forbidden_rate": 0.0,
+      "citation_validity": 1.0,
+      "judge_correctness": 0.5,
+      "faithfulness": 1.0
+    },
+    "trap_similar": {
+      "n": 4,
+      "abstention_accuracy": 1.0,
+      "source_hit": 1.0,
+      "key_fact_recall": 1.0,
+      "forbidden_rate": 0.0,
+      "citation_validity": 1.0,
+      "judge_correctness": 0.875,
+      "faithfulness": 1.0
+    },
+    "unanswerable": {
+      "n": 4,
+      "abstention_accuracy": 1.0,
+      "source_hit": null,
+      "key_fact_recall": null,
+      "forbidden_rate": 0.0,
+      "citation_validity": null,
+      "judge_correctness": 1.0,
+      "faithfulness": null
+    }
+  },
+  "cost": {
+    "answer_usd_total": 0.0059,
+    "judge_usd_total": 0.02038,
+    "answer_usd_per_1000_questions": 0.211,
+    "mean_input_tokens": 1310,
+    "mean_output_tokens": 199,
+    "mean_context_tokens": 1054,
+    "all_cached": true
+  },
+  "gated": [],
+  "errors": {},
+  "thresholds": {
+    "abstention_accuracy": 0.85,
+    "source_hit": 0.8,
+    "key_fact_recall": 0.7,
+    "citation_validity": 0.95,
+    "judge_correctness": 0.7,
+    "faithfulness": 0.85
+  },
+  "failures": []
+}

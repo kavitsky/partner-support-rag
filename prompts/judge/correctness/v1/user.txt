@@ -1,0 +1,6 @@
+Question: {question}
+
+Reference answer: {expected_answer}
+
+Assistant answer:
+{answer}

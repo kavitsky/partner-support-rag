@@ -1,0 +1,97 @@
+{
+  "pipeline_version": "ingest-1",
+  "documents": 50,
+  "by_format": {
+    "html": 36,
+    "docx": 6,
+    "pdf": 8
+  },
+  "exact_duplicates": {},
+  "near_duplicates": [
+    {
+      "a": "be-guestypay-tokenization",
+      "b": "oa-guestypay-tokenization",
+      "jaccard": 0.549
+    }
+  ],
+  "changed_since_manifest": [],
+  "kept_documents": 50,
+  "chunk_quality": {
+    "structure": {
+      "chunks": 579,
+      "tokens_mean": 221.5,
+      "tokens_p95": 350,
+      "tokens_min": 60,
+      "clean_start_pct": 96.7,
+      "clean_end_pct": 79.3,
+      "cut_table_or_code_pct": 1.4,
+      "by_format": {
+        "html": {
+          "chunks": 420,
+          "tokens_mean": 216.9,
+          "tokens_p95": 350,
+          "tokens_min": 61,
+          "clean_start_pct": 96.4,
+          "clean_end_pct": 80.0,
+          "cut_table_or_code_pct": 1.0
+        },
+        "pdf": {
+          "chunks": 60,
+          "tokens_mean": 236.3,
+          "tokens_p95": 350,
+          "tokens_min": 60,
+          "clean_start_pct": 100.0,
+          "clean_end_pct": 63.3,
+          "cut_table_or_code_pct": 0.0
+        },
+        "docx": {
+          "chunks": 99,
+          "tokens_mean": 232.3,
+          "tokens_p95": 350,
+          "tokens_min": 60,
+          "clean_start_pct": 96.0,
+          "clean_end_pct": 85.9,
+          "cut_table_or_code_pct": 4.0
+        }
+      }
+    },
+    "fixed": {
+      "chunks": 534,
+      "tokens_mean": 289.5,
+      "tokens_p95": 300,
+      "tokens_min": 54,
+      "clean_start_pct": 53.4,
+      "clean_end_pct": 23.8,
+      "cut_table_or_code_pct": 21.2,
+      "by_format": {
+        "html": {
+          "chunks": 379,
+          "tokens_mean": 289.6,
+          "tokens_p95": 300,
+          "tokens_min": 64,
+          "clean_start_pct": 53.0,
+          "clean_end_pct": 26.9,
+          "cut_table_or_code_pct": 21.6
+        },
+        "pdf": {
+          "chunks": 60,
+          "tokens_mean": 285.0,
+          "tokens_p95": 300,
+          "tokens_min": 54,
+          "clean_start_pct": 50.0,
+          "clean_end_pct": 3.3,
+          "cut_table_or_code_pct": 18.3
+        },
+        "docx": {
+          "chunks": 95,
+          "tokens_mean": 292.0,
+          "tokens_p95": 300,
+          "tokens_min": 87,
+          "clean_start_pct": 56.8,
+          "clean_end_pct": 24.2,
+          "cut_table_or_code_pct": 21.1
+        }
+      }
+    }
+  }
+}

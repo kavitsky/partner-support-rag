@@ -1,0 +1,385 @@
+{
+  "config": {
+    "name": "production",
+    "strategy": "structure",
+    "model": "BAAI/bge-small-en-v1.5",
+    "mode": "hybrid_rerank",
+    "use_surface_filter": true
+  },
+  "recall@5": 0.875,
+  "mrr@10": 0.809,
+  "doc_recall@5": 0.938,
+  "ms_per_query": 1128.3,
+  "misses": [
+    "q08",
+    "q10",
+    "q27"
+  ],
+  "per_question": [
+    {
+      "id": "q01",
+      "type": "answerable",
+      "hit_at_k": true,
+      "rr": 0.5,
+      "first_relevant_rank": 2,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "oa-rate-limits#000",
+        "oa-rate-limits#001",
+        "oa-direct-booking-website#001",
+        "oa-troubleshooting-error-codes#002",
+        "oa-quick-start-guide#009"
+      ]
+    },
+    {
+      "id": "q02",
+      "type": "answerable",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "oa-rate-limits#000",
+        "oa-quick-start-guide#009",
+        "oa-troubleshooting-error-codes#002",
+        "oa-troubleshooting-error-codes#000",
+        "oa-troubleshooting-error-codes#001"
+      ]
+    },
+    {
+      "id": "q03",
+      "type": "trap_similar",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "be-quick-start#008",
+        "be-authentication#001",
+        "be-authentication#002",
+        "be-accurate-stay-pricing#000",
+        "be-reservation-quote-flow#001"
+      ]
+    },
+    {
+      "id": "q04",
+      "type": "answerable",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "oa-authentication#006",
+        "oa-quick-start-guide#003",
+        "oa-authentication#007",
+        "oa-authentication#003",
+        "oa-authentication#012"
+      ]
+    },
+    {
+      "id": "q05",
+      "type": "trap_similar",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "be-authentication#000",
+        "be-quick-start#010",
+        "be-quick-start#004",
+        "be-authentication#002",
+        "be-quick-start#006"
+      ]
+    },
+    {
+      "id": "q06",
+      "type": "answerable",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "be-authentication#002",
+        "be-quick-start#010",
+        "be-authentication#003",
+        "be-quick-start#003",
+        "be-authentication#004"
+      ]
+    },
+    {
+      "id": "q07",
+      "type": "answerable",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "oa-reservation-webhooks-migration#000",
+        "oa-webhooks-reservations#000",
+        "oa-webhooks-reservations#001",
+        "oa-webhooks-reservations#002",
+        "oa-reservation-migration#014"
+      ]
+    },
+    {
+      "id": "q08",
+      "type": "trap_outdated",
+      "hit_at_k": false,
+      "rr": 0.16666666666666666,
+      "first_relevant_rank": 6,
+      "doc_recall_at_k": 0.5,
+      "top_k": [
+        "oa-webhooks-reservations#001",
+        "oa-webhooks-payments#000",
+        "oa-webhooks-calendar#001",
+        "oa-reservation-migration#014",
+        "oa-financial-webhooks#000"
+      ]
+    },
+    {
+      "id": "q09",
+      "type": "answerable",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "oa-reservation-migration#002",
+        "oa-reservation-webhooks-migration#001",
+        "oa-reservation-migration#011",
+        "oa-reservation-migration#014",
+        "oa-create-reservation#028"
+      ]
+    },
+    {
+      "id": "q10",
+      "type": "trap_outdated",
+      "hit_at_k": false,
+      "rr": 0.0,
+      "first_relevant_rank": null,
+      "doc_recall_at_k": 0.5,
+      "top_k": [
+        "be-quick-start#007",
+        "be-reservation-quote-flow#001",
+        "be-booking-flow#003",
+        "be-quick-start#002",
+        "be-faq#000"
+      ]
+    },
+    {
+      "id": "q11",
+      "type": "answerable",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "oa-calendar-webhook-migration#001",
+        "oa-webhooks-calendar#003",
+        "oa-webhooks-listings#002",
+        "oa-reservation-webhooks-migration#000",
+        "oa-calendar-webhook-migration#002"
+      ]
+    },
+    {
+      "id": "q12",
+      "type": "trap_similar",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "be-guestypay-tokenization#004",
+        "be-stripe-tokenization#005",
+        "be-booking-flow#003",
+        "be-quick-start#003",
+        "be-booking-flow#004"
+      ]
+    },
+    {
+      "id": "q13",
+      "type": "trap_similar",
+      "hit_at_k": true,
+      "rr": 0.5,
+      "first_relevant_rank": 2,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "oa-stripe-tokenization#005",
+        "oa-guestypay-tokenization#004",
+        "oa-guestypay-tokenization#002",
+        "oa-guestypay-tokenization#000",
+        "oa-guestypay-tokenization#003"
+      ]
+    },
+    {
+      "id": "q14",
+      "type": "answerable",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 0.5,
+      "top_k": [
+        "oa-guestypay-tokenization#004",
+        "oa-quick-start-guide#010",
+        "oa-webhooks-payments#001",
+        "be-booking-flow#004",
+        "oa-mcp-server#000"
+      ]
+    },
+    {
+      "id": "q15",
+      "type": "answerable",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "be-faq#000",
+        "be-booking-flow#003",
+        "be-booking-flow#004",
+        "be-google-vacation-rentals#000",
+        "be-authentication#003"
+      ]
+    },
+    {
+      "id": "q16",
+      "type": "answerable",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "oa-custom-reservation-fields-migration#002",
+        "oa-custom-reservation-fields-migration#000",
+        "oa-custom-reservation-fields-migration#001",
+        "oa-custom-reservation-fields-migration#003",
+        "oa-custom-reservation-fields-migration#006"
+      ]
+    },
+    {
+      "id": "q17",
+      "type": "answerable",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "oa-mcp-server#001",
+        "oa-mcp-server#000",
+        "oa-mcp-server#011",
+        "oa-reservations-v3-booking-flow#038",
+        "oa-create-reservation#017"
+      ]
+    },
+    {
+      "id": "q18",
+      "type": "answerable",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "oa-mcp-server#002",
+        "oa-mcp-server#006",
+        "oa-mcp-server#012",
+        "oa-mcp-server#005",
+        "oa-mcp-server#000"
+      ]
+    },
+    {
+      "id": "q19",
+      "type": "answerable",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "oa-troubleshooting-error-codes#001",
+        "oa-troubleshooting-error-codes#002",
+        "oa-quick-start-guide#013",
+        "oa-authentication#007",
+        "oa-quick-start-guide#008"
+      ]
+    },
+    {
+      "id": "q20",
+      "type": "answerable",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "oa-financial-webhooks#002",
+        "oa-financial-webhooks#000",
+        "oa-webhooks-reservations#001",
+        "oa-financial-webhooks#001",
+        "oa-reservation-webhooks-migration#001"
+      ]
+    },
+    {
+      "id": "q21",
+      "type": "answerable",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "oa-reservation-migration#003",
+        "oa-search-reservations#020",
+        "oa-reservation-migration#004",
+        "oa-search-reservations#010",
+        "oa-search-reservations#000"
+      ]
+    },
+    {
+      "id": "q22",
+      "type": "answerable",
+      "hit_at_k": true,
+      "rr": 1.0,
+      "first_relevant_rank": 1,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "oa-webhooks#003",
+        "oa-webhooks#004",
+        "oa-webhooks-payments#000",
+        "oa-webhooks-messages#017",
+        "oa-webhooks#005"
+      ]
+    },
+    {
+      "id": "q27",
+      "type": "multilingual",
+      "hit_at_k": false,
+      "rr": 0.0,
+      "first_relevant_rank": null,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "oa-quick-start-guide#001",
+        "oa-authentication#000",
+        "oa-quick-start-guide#000",
+        "oa-rate-limits#000",
+        "oa-authentication#011"
+      ]
+    },
+    {
+      "id": "q28",
+      "type": "multilingual",
+      "hit_at_k": true,
+      "rr": 0.25,
+      "first_relevant_rank": 4,
+      "doc_recall_at_k": 1.0,
+      "top_k": [
+        "oa-mcp-server#000",
+        "oa-mcp-server#010",
+        "oa-mcp-server#014",
+        "oa-mcp-server#001",
+        "oa-mcp-server#011"
+      ]
+    }
+  ],
+  "thresholds": {
+    "recall_at_k": 0.75,
+    "mrr_at_10": 0.65
+  },
+  "failures": []
+}

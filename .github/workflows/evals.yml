@@ -1,0 +1,70 @@
+name: evals
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      # Downloaded documentation (never committed). Keyed on the source list, so CI evaluates a stable snapshot.
+      - uses: actions/cache@v4
+        with:
+          path: data/raw
+          key: docs-${{ hashFiles('data/sources.toml', 'rag/fetch.py') }}
+
+      # ONNX models, embeddings, tiktoken and LLM responses. LLM calls are only made for new prompts/questions/context.
+      - uses: actions/cache@v4
+        with:
+          path: .cache
+          key: rag-cache-${{ hashFiles('requirements.txt', 'config.toml', 'prompts/**', 'evals/testset.jsonl', 'data/sources.toml', 'rag/**') }}
+          restore-keys: rag-cache-
+
+      - name: Install
+        run: python -m pip install -r requirements.txt
+
+      - name: Fetch docs (HTML, PDF via headless Chrome, DOCX)
+        run: python main.py fetch
+
+      - name: Ingest
+        run: python main.py ingest
+
+      - name: Unit tests
+        run: python -m unittest discover -s tests -t . -v
+
+      - name: Retrieval eval (fails below recall/MRR thresholds)
+        run: python main.py eval-retrieval --check
+
+      - name: Answer eval (fails below thresholds)
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          if [ -z "$OPENROUTER_API_KEY" ]; then
+            echo "::error::OPENROUTER_API_KEY secret is not set (forks do not receive secrets)"
+            exit 1
+          fi
+          python main.py eval
+
+      - name: Summary
+        if: always()
+        run: |
+          for f in results/chunking.md results/eval_v2.md; do
+            [ -f "$f" ] && { echo "### $f"; cat "$f"; echo; } >> "$GITHUB_STEP_SUMMARY"
+          done
+          [ -f results/retrieval_check.json ] && python -c "import json; r=json.load(open('results/retrieval_check.json')); print(f\"### Retrieval\nrecall@5 {r['recall@5']}, MRR@10 {r['mrr@10']}, misses {r['misses']}\")" >> "$GITHUB_STEP_SUMMARY" || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: eval-results
+          path: results/
