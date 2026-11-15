@@ -28,4 +28,4 @@ Questions, references and quotes were drafted by the assistant from the extracte
 - q10: the replacement table chunk was added as evidence alongside the deprecation schedule.
 - q17, q28: "cannot create, update, or delete" was added as an accepted wording of "read-only".
 
-Human review status: see `reviewed_by_human` on each row.
+Human review: all 28 rows were checked by the author, Sofia Kavitsky. She reviewed the references against the docs and graded all 28 answers blind (see the judge calibration in REPORT.md). Grading surfaced answers that support knows but the public docs don't contain, for example that pricing is part of the Guesty Pro package. These stayed out of the references, which describe only what the corpus says.
