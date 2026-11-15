@@ -2,7 +2,7 @@
 
 The setup: 50 Guesty developer-doc pages (36 HTML, 8 PDF, 6 DOCX) split into 579 structure-aware chunks, hybrid BM25 and vector search with cross-encoder reranking, and answers from Gemini 2.5 Flash Lite (prompt v2) with per-claim citations. Evaluated on 28 questions.
 
-**Summary.** Answers are faithful to their sources (1.00), say "not in the docs" exactly when they should on 27 of 28 questions, and are judged correct on 0.93 on a 0–1 scale. The remaining errors come from retrieval: tables and migration pages rank too low, and Ukrainian questions miss English chunks. They don't come from made-up content. Answering costs about $0.21 per 1,000 questions.
+**Summary.** Answers are faithful to their sources (1.00), say "not in the docs" exactly when they should on 27 of 28 questions, and are judged correct on 0.93 on a 0–1 scale. The judge agrees with hand grades on 93% of answers for correct vs not (kappa 0.46 on 3 labels). The remaining errors come from retrieval: tables and migration pages rank too low, and Ukrainian questions miss English chunks. They don't come from made-up content. Answering costs about $0.21 per 1,000 questions.
 
 ## 1. Ingestion
 
@@ -74,16 +74,32 @@ The abstain gate (rerank score below -4.0) didn't fire on any test question. All
 
 ## 4. Judge calibration
 
-**Pending human grading.** Run `make grade` (blind: the judge's verdict is hidden), grade at least 12 answers, then run `make calibrate`. That writes `results/judge_calibration.md`, whose numbers go here:
+All 28 prompt-v2 answers were graded by hand with `make grade`. Grading was blind: the judge's verdict wasn't shown. Details are in [`results/judge_calibration.md`](results/judge_calibration.md), and the grades with notes in [`evals/human_grades.jsonl`](evals/human_grades.jsonl).
 
 | | |
 |---|---|
-| Answers graded by a human | – |
-| Exact agreement (3 labels) | – |
-| Binary agreement (correct vs not) | – |
-| Cohen's kappa | – |
+| Answers graded by a human | 28 |
+| Exact agreement (3 labels) | **89%** (25 / 28) |
+| Binary agreement (correct vs not) | **93%** (26 / 28) |
+| Cohen's kappa (3 labels) | **0.46** (moderate) |
 
-One judge error is already known. For v1 q17 the assistant wrongly said "not in the docs", and the judge rated it *correct* even though its prompt says that abstaining when the reference has an answer is incorrect (see error 5).
+| human \ judge | correct | partially correct | incorrect |
+|---|---|---|---|
+| correct | 24 | 1 | 0 |
+| partially correct | 1 | 0 | 0 |
+| incorrect | 0 | 1 | 1 |
+
+The three disagreements:
+
+- **q27 (Ukrainian rate limits):** human *incorrect*, judge *partially correct*. The answer describes rate-limit headers but gives none of the limits. The human view is that it doesn't answer the question; the judge gave credit for related facts. The judge is more lenient.
+- **q13 (Open API GuestyPay reuse):** human *correct*, judge *partially correct*. The judge required the secondary `reservationId` detail. The judge is stricter on completeness.
+- **q19 (403 error):** human *partially correct*, judge *correct*. The human expected the answer to stress the permissions cause more.
+
+**Interpretation:** agreement on correct-vs-not (93%) is good enough to use the judge as a CI gate together with the deterministic checks. Kappa is held down by class imbalance: only 3 of the 28 human grades are below "correct", so each disagreement weighs heavily, and the 3-label scores shouldn't be read finely. The only clear bias is leniency when an answer is relevant but misses the asked-for facts (q27). The same pattern showed in v1 q17, where the judge accepted a wrong refusal (error 5).
+
+**Calibration process:** the first grading pass judged three answers against outside product knowledge rather than the docs. For example, "pricing is in the Guesty Pro package" is true, but it isn't in the corpus. Those three were re-graded against the rubric (answer from the documents only) before the final numbers. That pass had 82% exact agreement and kappa -0.08.
+
+The calibration sample has few failures. The next step is to grade the v1 answers, which include wrong refusals, so kappa is measured on a balanced sample.
 
 ## 5. Typical errors
 
@@ -91,7 +107,7 @@ One judge error is already known. For v1 q17 the assistant wrongly said "not in 
 2. **The Ukrainian rate-limit question misses the numbers (q27, retrieval and extraction).** "Які ліміти запитів має Open API?" retrieves the rate-limits intro but not the chunk with the numbers. In the PDF that table is flattened into one line ("Maximum Number of Requests Time Frame 15 one second 120 one minute 5,000 one hour"), which matches neither the English nor the Ukrainian wording well. The answer is accurate but has no limits, and it is in English despite v2's language rule.
 3. **A claim cites the similar page from another provider (q13, citation).** The Open API GuestyPay answer cites both the GuestyPay page and the *Stripe* tokenization page for "set reuse to true". It's correct here because the two pages agree, but the same behaviour would give a wrong answer where they differ: the Booking Engine GuestyPay page says reuse is *not* supported. Faithfulness can't catch this, because the claim *is* supported by the Stripe page.
 4. **Section labels in citations can be imprecise (q08, metadata).** Small sections are merged into their neighbour and the chunk keeps the first section's name, so a correct claim about `reservation.new` is cited as "Reservation webhooks › Guest folio updates". The document is right but the section isn't.
-5. **The judge is lenient about wrong refusals (v1 q17, judge).** The answer said "not in the docs", then quoted "all tools are read-only", and the judge called it correct. A judge that rewards hedged refusals would hide over-refusal regressions. That's why human calibration is required before trusting the judge's score.
+5. **The judge is lenient on relevant answers that miss the point (v1 q17, v2 q27, judge).** In v1 q17 the answer said "not in the docs", then quoted "all tools are read-only", and the judge called it correct. In v2 q27 the answer gave none of the limits the question asked for, and the judge gave partial credit while the human grade was incorrect. A lenient judge hides regressions, which is why CI also gates on the deterministic key-fact and abstention checks, not on the judge alone.
 
 ## 6. Next improvements
 
@@ -100,6 +116,7 @@ One judge error is already known. For v1 q17 the assistant wrongly said "not in 
 - **Track every section in merged chunks** and cite the section that contains the quoted sentence (error 4).
 - **Judge prompt v2:** add few-shot examples of hedged refusals, and recalibrate against the human grades (error 5).
 - **Version awareness:** use `updated_at` and legacy markers as a ranking signal when the question names a legacy resource, and add more outdated-version traps (only 2 today).
+- **Docs coverage gaps found while grading:** the human grader's notes record answers support knows but the public docs don't contain. Examples: Open API access comes with the Guesty Pro package; QuickBooks needs a custom integration or Guesty Connect; guests can be looked up through the guests endpoint. These belong in the corpus, for example from the Help Center, rather than in the model.
 - **A bigger, real test set:** turn Homework 1's partner tickets into questions and set per-type thresholds, so traps can't hide behind the overall average.
 
 ## 7. Cost

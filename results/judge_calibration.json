@@ -1,0 +1,50 @@
+{
+  "n": 28,
+  "exact_agreement": 0.893,
+  "binary_agreement": 0.929,
+  "cohen_kappa": 0.458,
+  "confusion": {
+    "correct": {
+      "correct": 24,
+      "partially_correct": 1,
+      "incorrect": 0
+    },
+    "partially_correct": {
+      "correct": 1,
+      "partially_correct": 0,
+      "incorrect": 0
+    },
+    "incorrect": {
+      "correct": 0,
+      "partially_correct": 1,
+      "incorrect": 1
+    }
+  },
+  "disagreements": [
+    {
+      "id": "q13",
+      "prompt": "v2",
+      "human": "correct",
+      "judge": "partially_correct",
+      "judge_reasoning": "The assistant correctly states that setting reuse to true when creating the payment method allows it to be used for multiple reservations, which matches the reference. However, it omits the detail about including the reservationId to enable payment automations, making the answer incomplete.",
+      "note": ""
+    },
+    {
+      "id": "q19",
+      "prompt": "v2",
+      "human": "partially_correct",
+      "judge": "correct",
+      "judge_reasoning": "The assistant's answer correctly explains that a 403 Forbidden error means the user is authenticated but not permitted to make the request, including examples like wrong API key or plan restrictions, matching the reference. It also adds a helpful resolution tip without contradicting the reference.",
+      "note": "can also be permissions issue"
+    },
+    {
+      "id": "q27",
+      "prompt": "v2",
+      "human": "incorrect",
+      "judge": "partially_correct",
+      "judge_reasoning": "The assistant explains the existence of rate limits, the handling of HTTP 429 responses, and the headers indicating limits and remaining requests, but it does not specify the exact numeric limits (15 per second, 120 per minute, 5000 per hour) or that limits are shared across all account tokens as the reference does. Therefore, it is missing essential facts from the reference answer.",
+      "note": "the answer does not answer the question"
+    }
+  ],
+  "stale_grades": []
+}
